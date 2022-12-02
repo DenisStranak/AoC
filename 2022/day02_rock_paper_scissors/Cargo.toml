@@ -1,5 +1,5 @@
 [package]
-name = "calorie_counting"
+name = "day02_rock_paper_scissors"
 version = "0.1.0"
 edition = "2021"
 
