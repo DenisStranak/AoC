@@ -24,7 +24,7 @@ fn main() {
     );
 
     println!("Part 2:");
-    draw_pixels(get_pixels(&signals));
+    draw_signals(&signals);
 }
 
 fn sum_signal_strengths(signals: &Vec<i32>, cycles: [usize; 6]) -> i32 {
@@ -36,23 +36,16 @@ fn sum_signal_strengths(signals: &Vec<i32>, cycles: [usize; 6]) -> i32 {
     return signal_strength_sum;
 }
 
-fn get_pixels(signals: &Vec<i32>) -> Vec<char> {
-    let mut pixels: Vec<char> = Vec::new();
-    for chunk in signals.chunks(40) {
-        for (i, sprite_position) in chunk.into_iter().enumerate() {
+fn draw_signals(signals: &Vec<i32>) {
+    for row in signals.chunks(40) {
+        for (i, sprite_position) in row.into_iter().enumerate() {
             if i as i32 >= sprite_position - 1 && i as i32 <= sprite_position + 1 {
-                pixels.push('#');
+                print!("#");
             } else {
-                pixels.push('.');
+                print!(".");
             }
         }
-    }
 
-    return pixels;
-}
-
-fn draw_pixels(pixels: Vec<char>) {
-    for row in pixels.chunks(40) {
-        println!("{}", row.into_iter().collect::<String>());
+        println!();
     }
 }
